@@ -396,7 +396,7 @@ static BOOL _available_set = NO;
             return;
         }
         
-        if ( reportProgress && [NSDate timeIntervalSinceReferenceDate]-lastProgressReport > 0.1 ) {
+        if ( reportProgress && [NSDate timeIntervalSinceReferenceDate]-lastProgressReport > 0.1 && cancelled == NO ) {
             lastProgressReport = [NSDate timeIntervalSinceReferenceDate];
             [self performSelectorOnMainThread:@selector(reportProgress:) withObject:[NSNumber numberWithFloat:(double)sourceFrameOffset/lengthInFrames] waitUntilDone:NO];
         }
