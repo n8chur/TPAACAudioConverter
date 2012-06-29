@@ -123,7 +123,6 @@ static BOOL _available_set = NO;
     
     cancelled = NO;
     processing = YES;
-    [self retain];
     [self performSelectorInBackground:@selector(processingThread) withObject:nil];
 }
 
@@ -137,7 +136,6 @@ static BOOL _available_set = NO;
         checkResult(AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers, sizeof (allowMixing), &allowMixing),
                     "AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers)");
     }
-    [self autorelease];
 }
 
 - (void)interrupt {
@@ -164,7 +162,6 @@ static BOOL _available_set = NO;
         checkResult(AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers, sizeof (allowMixing), &allowMixing),
                     "AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers)");
     }
-    [self autorelease];
 }
 
 - (void)reportErrorAndCleanup:(NSError*)error {
@@ -174,7 +171,6 @@ static BOOL _available_set = NO;
         checkResult(AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers, sizeof (allowMixing), &allowMixing),
                     "AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers)");
     }
-    [self autorelease];
     [delegate AACAudioConverter:self didFailWithError:error];
 }
 
